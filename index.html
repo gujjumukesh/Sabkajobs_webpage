@@ -32,6 +32,40 @@
   <title>Sabkajobs training</title>
   <link rel="manifest" href="manifest.json">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    window.checkoutRazorpay = function(options, onSuccess, onFailure) {
+      var config = {
+        key: options.key,
+        amount: options.amount,
+        currency: options.currency || "INR",
+        name: options.name,
+        description: options.description,
+        prefill: {
+          name: options.prefillName || "",
+          email: options.prefillEmail || "",
+          contact: options.prefillContact || ""
+        },
+        notes: options.notes || {},
+        theme: {
+          color: options.themeColor || "#1E2B58"
+        },
+        handler: function (response) {
+          if (onSuccess) {
+            onSuccess(response.razorpay_payment_id);
+          }
+        },
+        modal: {
+          ondismiss: function () {
+            if (onFailure) {
+              onFailure("Payment cancelled by user");
+            }
+          }
+        }
+      };
+      var rzp = new Razorpay(config);
+      rzp.open();
+    };
+  </script>
 </head>
 <body>
   <!--
