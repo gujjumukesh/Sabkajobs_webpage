@@ -123380,7 +123380,7 @@ n=A.K(10)
 m=A.K(10)
 m=A.bmE(l,l,new A.bs(4,o,B.jT),l,l,B.mS,l,l,l,new A.bs(4,n,B.jT),new A.bs(4,A.K(10),B.Wz),l,l,B.x,!0,l,l,l,l,new A.bs(4,m,B.WG),l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l,l)
 j=A.zR(s,l,new A.wC(l,B.x,l,l,0,B.aQ,new A.bk(r,B.jT)),B.a_I,new A.tA(B.x,8,B.Y.aZ(0.08),l,new A.bk(A.K(20),B.jT),l,A.hx().$3$color$fontSize$fontWeight(B.cI,18,B.L),A.hx().$3$color$fontSize$height(B.cU,14,1.5),l,l,l,l,l,l),B.dF,B.a31,new A.Ch(q),m,new A.Dt(p),B.ho,j,!0)
-return new A.L2(A.ab(["/",new A.aAX(),"/login",new A.aAY(),"/signup",new A.aAZ(),"/user_dashboard",new A.aB_(),"/employer_dashboard",new A.aB0(),"/admin_dashboard",new A.aB1(),"/database",new A.aB2(),"/payments",new A.aB3()],t.N,t.Ab),"/","Sabkajobs training",j,!1,l)}}
+return new A.L2(A.ab(["/",new A.aAX(),"/login",new A.aAY(),"/signup",new A.aAZ(),"/user_dashboard",new A.aB_(),"/employer_dashboard",new A.aB0(),"/admin_dashboard",new A.aB1(),"/database",new A.aB2(),"/payments",new A.aB3()],t.N,t.Ab),"/login","Sabkajobs training",j,!1,l)}}
 A.aAX.prototype={
 $1(a){return B.b7e},
 $S:759}
