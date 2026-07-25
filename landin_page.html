@@ -812,6 +812,101 @@
       opacity: 1;
       transform: none;
     }
+
+    /* Terms Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      border-radius: 16px;
+      padding: 32px;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748B;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 16px;
+    }
+
+    .modal-body {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .modal-body h3 {
+      font-size: 20px;
+      color: #1E293B;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 8px;
+    }
+
+    .modal-body h4 {
+      font-size: 16px;
+      color: #334155;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .modal-body ul {
+      margin-top: 8px;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .modal-body li {
+      margin-bottom: 4px;
+    }
+
+    .modal-body p {
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 
@@ -831,10 +926,10 @@
         <a href="#training">Placement Training</a>
         <a href="#investors">Investors</a>
         <a href="#contact">Contact</a>
+        <a href="#" id="terms-nav-link">Terms</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="https://sabkajobs-webpage.vercel.app/" target="_blank" rel="noopener">Open
-          Portal</a>
+        <a class="btn btn-ghost" href="/login">Open Portal</a>
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=sabkajobs.co.in" target="_blank"
           rel="noopener">Get the App</a>
       </div>
@@ -950,8 +1045,7 @@
       </div>
 
       <div class="training-cta reveal">
-        <a class="btn btn-gold" href="https://sabkajobs-webpage.vercel.app/" target="_blank" rel="noopener">Join
-          Placement Training</a>
+        <a class="btn btn-gold" href="/login">Join Placement Training</a>
       </div>
     </section>
 
@@ -1011,8 +1105,7 @@
       <h2>Ready when you are.</h2>
       <p>Explore the portal, start placement training, or reach out for HR, payroll and investor conversations.</p>
       <div class="final-ctas">
-        <a class="btn btn-primary" href="https://sabkajobs-webpage.vercel.app/" target="_blank" rel="noopener">Open the
-          Portal</a>
+        <a class="btn btn-primary" href="/login">Open the Portal</a>
         <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=sabkajobs.co.in" target="_blank"
           rel="noopener">Download the App</a>
       </div>
@@ -1049,7 +1142,7 @@
           <a href="#training">30-Day Program</a>
           <a href="https://play.google.com/store/apps/details?id=sabkajobs.co.in" target="_blank" rel="noopener">Get the
             App</a>
-          <a href="https://sabkajobs-webpage.vercel.app/" target="_blank" rel="noopener">Open Portal</a>
+          <a href="/login">Open Portal</a>
         </div>
         <div class="foot-col">
           <h5>Domains</h5>
@@ -1065,11 +1158,127 @@
     </div>
   </footer>
 
+  <div class="modal-overlay" id="terms-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="close-terms">&times;</button>
+      <div class="modal-title">Terms & Privacy Policy</div>
+      <div class="modal-body">
+        <h3>Part 1: Jobseeker Terms & Conditions</h3>
+        <h4>1. Scope of Services</h4>
+        <p>Sabkajobs.com operates as an employment portal and HR consultancy service, bridging the gap between job
+          seekers and prospective employers. We provide profile hosting, job matching, Value-Added Services (VAS), and
+          specialized placement training.</p>
+
+        <h4>2. Fee Policy & Zero-Tolerance on Bribes for Jobs</h4>
+        <p>In strict compliance with Indian employment laws, Sabkajobs.com does not charge any fee from candidates
+          simply for providing a job. We strictly condemn the practice of taking bribes or “donations” for job
+          placements.</p>
+        <p>We charge for explicit, opt-in Value-Added Services (VAS) and operational processing, including:</p>
+        <ul>
+          <li>Profile Enhancements: Premium subscription services.</li>
+          <li>Document Processing: Handling physical copies if requested by employers.</li>
+          <li>CV Writing & Skill Development.</li>
+        </ul>
+
+        <h4>3. Placement Training Program</h4>
+        <ul>
+          <li>Entry Fee: Non-refundable onboarding fee of INR 299/-.</li>
+          <li>Success Fee: Upon successfully securing a job offer, the candidate pays a Placement Success Fee of INR
+            10,000/- (one-time), or may opt for the EMI Plan described in Part 3, Clause 2.</li>
+        </ul>
+
+        <h4>4. Nature of Job Matching — No Guarantee of Preferred Role</h4>
+        <p>Sabkajobs.com facilitates genuine employment opportunities based on the mutual understanding and requirements
+          of the Employer and the Candidate. The Company connects candidates with available vacancies and does not
+          guarantee placement in any specific job role, designation, industry, or company that a Candidate may
+          personally prefer.</p>
+        <p>Once a Candidate accepts an interview call or a job offer facilitated through the platform, such acceptance
+          is treated as final and binding, and the Candidate agrees not to withdraw from or reject that opportunity
+          thereafter without valid and reasonable cause. If a Candidate is not interested in a particular opportunity,
+          they must clearly communicate this at the time the interview or offer is presented — and in any case before
+          accepting it — and not after acceptance.</p>
+
+        <h3>Part 2: Jobseeker Privacy Policy</h3>
+        <h4>1. Data Collection & Usage</h4>
+        <p>By registering on Sabkajobs.com, you explicitly consent to the sharing of your professional profile with
+          registered corporate partners and verified companies seeking manpower.</p>
+
+        <h3>Part 3: Conditional Training and Placement E-Sign Agreement</h3>
+        <p>BETWEEN: Subh Bharath Study Tool Pvt Ltd (“Company”) AND the Candidate.</p>
+        <h4>1. The Trigger Event & Payment Terms</h4>
+        <p>The Post-Placement Success Fee becomes immediately due upon the Candidate signing/accepting an Offer Letter
+          from an employer introduced by Sabkajobs.com. Payment must be cleared within 7 calendar days from the date of
+          receiving the Candidate's first month's salary, or within 30 days of onboarding, whichever is earlier.</p>
+
+        <h4>2. Payment Options — One-Time Fee or EMI Plan</h4>
+        <p>The Candidate may choose either of the following payment options for the Post-Placement Success Fee:</p>
+        <ul>
+          <li>One-Time Payment: A single payment of INR 10,000/-.</li>
+          <li>EMI Plan: Three (3) monthly instalments of INR 5,000/- each, debited from the Candidate's bank account on
+            a monthly basis, aggregating to a total of INR 15,000/-.</li>
+        </ul>
+        <p>Candidates opting for the EMI Plan acknowledge and accept that the aggregate amount payable under the EMI
+          Plan (INR 15,000/-) is higher than the One-Time Payment option (INR 10,000/-), on account of instalment
+          processing and deferred collection. The Candidate must indicate their preferred payment option at the time of
+          accepting the Offer Letter.</p>
+
+        <h3>Part 4: Employer Terms & Conditions</h3>
+        <h4>1. Zero-Tolerance Anti-Fraud Policy</h4>
+        <p>Employers must not charge candidates any hidden fees, deposits, or “security money” for providing a job. All
+          job postings must be for legitimate, existing vacancies.</p>
+
+        <h4>2. Letter of Intent (LOI) & Legal Binding</h4>
+        <p>Once an Employer generates and issues an LOI to a Candidate through our platform, the Employer legally agrees
+          and commits to hiring that Candidate under applicable Indian Labour Laws.</p>
+
+        <h4>3. LOI-Linked Subsidy Arrangement</h4>
+        <p>Upon generation and issuance of the Letter of Intent (LOI), the placement arrangement between the Employer
+          and the Candidate is facilitated and subsidized by Sabkajobs.com — a brand owned and operated by Subh Bharath
+          Study Tool Private Limited — under mutual agreement between the Company, the Employer, and the Candidate. This
+          subsidy arrangement does not alter the Employer's obligations under Clause 2 above, nor does it entitle any
+          party to demand fees outside the scope of this Agreement.</p>
+
+        <h4>4. Training Fee Contribution & Revenue Share</h4>
+        <p>Upon successful onboarding of a candidate, Sabkajobs.com may share up to 70% of the candidate's placement
+          training fee (capped at INR 7,000/-) with the Employer. The incentive will strictly be transferred to the
+          legally registered corporate bank account of the Employer.</p>
+      </div>
+      <div class="modal-footer" style="margin-top: 24px; text-align: right; border-top: 1px solid #E2E8F0; padding-top: 16px;">
+        <a href="/login" class="btn btn-primary" style="padding: 12px 24px;">Accept & Continue</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('investor-mail').addEventListener('click', function (e) {
       e.preventDefault();
       window.location.href = 'mailto:invest@sabkajobs.com?subject=Investor%20Inquiry%20-%20Sabkajobs.com';
     });
+
+    const termsLink = document.getElementById('terms-nav-link');
+    const termsModal = document.getElementById('terms-modal');
+    const closeTerms = document.getElementById('close-terms');
+
+    if (termsLink) {
+      termsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        termsModal.classList.add('active');
+      });
+    }
+
+    if (closeTerms) {
+      closeTerms.addEventListener('click', () => {
+        termsModal.classList.remove('active');
+      });
+    }
+
+    if (termsModal) {
+      termsModal.addEventListener('click', (e) => {
+        if (e.target === termsModal) {
+          termsModal.classList.remove('active');
+        }
+      });
+    }
 
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
