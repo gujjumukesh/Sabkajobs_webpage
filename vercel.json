@@ -2,6 +2,7 @@
   "cleanUrls": false,
   "rewrites": [
     { "source": "/openings", "destination": "/jobs.html" },
+    { "source": "/google79b8ef15f6ac7926.html", "destination": "/google79b8ef15f6ac7926.html" },
     { "source": "/(.*)", "destination": "/app.html" }
   ]
 }
