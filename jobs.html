@@ -177,6 +177,35 @@
           lastDateToApply: data.lastDateToApply || 'Not specified',
           description: data.description || 'No description provided.'
         });
+
+        // Generate JSON-LD JobPosting schema for Google for Jobs
+        const datePosted = data.createdAt && data.createdAt.toDate ? data.createdAt.toDate().toISOString() : new Date().toISOString();
+        const jobSchema = {
+          "@context": "https://schema.org/",
+          "@type": "JobPosting",
+          "title": title,
+          "description": data.description || title,
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": company,
+            "logo": "https://sabkajobs.in/assets/assets/images/logo.png"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": location,
+              "addressCountry": "IN"
+            }
+          },
+          "datePosted": datePosted,
+          "employmentType": "FULL_TIME"
+        };
+        
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(jobSchema);
+        document.head.appendChild(script);
         
         const card = document.createElement('div');
         card.className = 'job-card';
