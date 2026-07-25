@@ -1,9 +1,7 @@
 {
   "cleanUrls": false,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/app.html"
-    }
+    { "source": "/openings", "destination": "/jobs.html" },
+    { "source": "/(.*)", "destination": "/app.html" }
   ]
 }

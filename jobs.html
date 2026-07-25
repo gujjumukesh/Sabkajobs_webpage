@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Openings - Sabkajobs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base variables copied from landing page */
+    :root {
+      --primary: #10B981;
+      --primary-dark: #059669;
+      --secondary: #0F172A;
+      --accent: #F59E0B;
+      --text: #334155;
+      --text-light: #64748B;
+      --bg: #F8FAFC;
+      --bg-white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    
+    /* Header */
+    header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #E2E8F0; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { width: 40px; height: 40px; border-radius: 8px; }
+    .brand-word { font-size: 20px; font-weight: 900; color: var(--secondary); letter-spacing: -0.5px; }
+    .brand-word span { color: var(--primary); }
+    .nav-cta a { text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 15px; margin-left: 12px; }
+    .btn-ghost { color: var(--text); }
+    .btn-ghost:hover { background: #F1F5F9; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    /* Main Content */
+    main { max-width: 1200px; margin: 40px auto; padding: 0 24px; min-height: 70vh; }
+    .page-title { font-size: 36px; color: var(--secondary); margin-bottom: 8px; font-weight: 800; }
+    .page-subtitle { font-size: 16px; color: var(--text-light); margin-bottom: 40px; }
+
+    /* Jobs Grid */
+    .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    
+    /* Job Card */
+    .job-card { background: white; border-radius: 16px; padding: 24px; border: 1px solid #E2E8F0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .job-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); }
+    .job-icon { width: 48px; height: 48px; background: #EFF6FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #2563EB; font-size: 24px; font-weight: bold; }
+    .job-title { font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 4px; }
+    .job-company { font-size: 14px; font-weight: 600; color: #2563EB; margin-bottom: 16px; }
+    .job-meta { display: flex; gap: 16px; margin-bottom: 24px; font-size: 13px; color: var(--text-light); }
+    .job-meta div { display: flex; align-items: center; gap: 4px; }
+    .job-meta svg { width: 16px; height: 16px; }
+    .btn-apply { margin-top: auto; display: block; text-align: center; width: 100%; padding: 12px; border-radius: 8px; border: 1.5px solid var(--primary); color: var(--primary); text-decoration: none; font-weight: 600; transition: all 0.2s; }
+    .btn-apply:hover { background: var(--primary); color: white; }
+
+    /* Loader */
+    .loader { text-align: center; padding: 40px; color: var(--text-light); font-weight: 500; font-size: 18px; }
+    .error-msg { text-align: center; padding: 40px; color: #EF4444; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <img src="assets/images/round_logo.jpg" alt="Sabkajobs crest logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'><rect width=\'40\' height=\'40\' fill=\'%2310B981\'/><text x=\'20\' y=\'20\' fill=\'white\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' font-weight=\'bold\'>SJ</text></svg>'">
+        <span class="brand-word">SABKA<span>JOBS</span></span>
+      </a>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/login">Open Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Latest Opportunities</h1>
+    <p class="page-subtitle">Find and apply to the best jobs matching your skills.</p>
+    
+    <div id="loader" class="loader">Loading latest jobs...</div>
+    <div id="error" class="error-msg" style="display: none;">Unable to load jobs at this time.</div>
+    <div id="jobs-container" class="jobs-grid"></div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLCn160wKfW8XbpenJNPafhQNGOcnvJUs",
+      projectId: "sabkajobs-training-app-659be",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const container = document.getElementById('jobs-container');
+    const loader = document.getElementById('loader');
+    const errorDiv = document.getElementById('error');
+
+    db.collection("jobs").orderBy("createdAt", "desc").get().then((snapshot) => {
+      loader.style.display = 'none';
+      if (snapshot.empty) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748B;">No job openings available right now. Please check back later!</p>';
+        return;
+      }
+      
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const title = data.title || 'Unknown Title';
+        const company = data.company || 'Unknown Company';
+        const location = data.location || 'Location not specified';
+        const salary = data.salary || 'Not specified';
+        
+        const card = document.createElement('div');
+        card.className = 'job-card';
+        card.innerHTML = `
+          <div class="job-icon">${title.charAt(0).toUpperCase()}</div>
+          <div class="job-title">${title}</div>
+          <div class="job-company">${company}</div>
+          <div class="job-meta">
+            <div>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              ${location}
+            </div>
+            <div>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              ${salary}
+            </div>
+          </div>
+          <a href="/login" class="btn-apply">Login to Apply</a>
+        `;
+        container.appendChild(card);
+      });
+    }).catch((error) => {
+      console.error("Error fetching jobs: ", error);
+      loader.style.display = 'none';
+      errorDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
