@@ -58,6 +58,22 @@
     /* Loader */
     .loader { text-align: center; padding: 40px; color: var(--text-light); font-weight: 500; font-size: 18px; }
     .error-msg { text-align: center; padding: 40px; color: #EF4444; font-weight: 500; }
+    
+    /* Modal */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 24px; opacity: 0; transition: opacity 0.2s; }
+    .modal-overlay.active { display: flex; opacity: 1; }
+    .modal-content { background: white; border-radius: 16px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; padding: 32px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-light); }
+    .modal-title { font-size: 24px; font-weight: 800; color: var(--secondary); margin-bottom: 8px; }
+    .modal-company { font-size: 16px; font-weight: 600; color: #2563EB; margin-bottom: 24px; }
+    .modal-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #E2E8F0; }
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .meta-label { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+    .meta-val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .modal-desc-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--secondary); }
+    .modal-desc { font-size: 15px; color: var(--text); line-height: 1.7; white-space: pre-wrap; margin-bottom: 32px; }
+    .modal-apply-btn { display: block; text-align: center; width: 100%; padding: 16px; border-radius: 8px; background: var(--primary); color: white; text-decoration: none; font-weight: 600; font-size: 16px; transition: background 0.2s; }
+    .modal-apply-btn:hover { background: var(--primary-dark); }
   </style>
 </head>
 <body>
@@ -83,6 +99,13 @@
     <div id="jobs-container" class="jobs-grid"></div>
   </main>
 
+  <div id="job-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
   <script>
@@ -96,6 +119,39 @@
     const container = document.getElementById('jobs-container');
     const loader = document.getElementById('loader');
     const errorDiv = document.getElementById('error');
+    const modal = document.getElementById('job-modal');
+    const modalBody = document.getElementById('modal-body');
+
+    let allJobs = [];
+
+    function openModal(index) {
+      const job = allJobs[index];
+      modalBody.innerHTML = `
+        <div class="modal-title">${job.title}</div>
+        <div class="modal-company">${job.company}</div>
+        <div class="modal-meta-grid">
+          <div class="meta-item"><span class="meta-label">Location</span><span class="meta-val">${job.location}</span></div>
+          <div class="meta-item"><span class="meta-label">Salary Range</span><span class="meta-val">${job.salary}</span></div>
+          <div class="meta-item"><span class="meta-label">Experience</span><span class="meta-val">${job.experience}</span></div>
+          <div class="meta-item"><span class="meta-label">Skills</span><span class="meta-val">${job.skills}</span></div>
+          <div class="meta-item"><span class="meta-label">Last Date to Apply</span><span class="meta-val" style="color: #EF4444">${job.lastDateToApply}</span></div>
+        </div>
+        <div class="modal-desc-title">Job Description</div>
+        <div class="modal-desc">${job.description}</div>
+        <a href="/login" class="modal-apply-btn">Login to Apply</a>
+      `;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
 
     db.collection("jobs").orderBy("createdAt", "desc").get().then((snapshot) => {
       loader.style.display = 'none';
@@ -104,12 +160,26 @@
         return;
       }
       
+      let index = 0;
       snapshot.forEach((doc) => {
         const data = doc.data();
         const title = data.title || 'Unknown Title';
         const company = data.company || 'Unknown Company';
-        const location = data.location || 'Location not specified';
+        const location = data.location || 'Not specified';
         const salary = data.salary || 'Not specified';
+        const experience = data.experience || 'Not specified';
+        const skills = data.skills || 'Not specified';
+        
+        allJobs.push({
+          title: title,
+          company: company,
+          location: location,
+          salary: salary,
+          experience: experience,
+          skills: skills,
+          lastDateToApply: data.lastDateToApply || 'Not specified',
+          description: data.description || 'No description provided.'
+        });
         
         const card = document.createElement('div');
         card.className = 'job-card';
@@ -127,9 +197,10 @@
               ${salary}
             </div>
           </div>
-          <a href="/login" class="btn-apply">Login to Apply</a>
+          <button onclick="openModal(${index})" class="btn-apply" style="cursor: pointer; background: none;">View Details</button>
         `;
         container.appendChild(card);
+        index++;
       });
     }).catch((error) => {
       console.error("Error fetching jobs: ", error);
