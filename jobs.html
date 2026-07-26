@@ -113,7 +113,7 @@
 
     let allJobs = [];
 
-    function openModal(index) {
+    function openModal(index, skipPushState = false) {
       const job = allJobs[index];
       modalBody.innerHTML = `
         <div class="modal-title">${job.title}</div>
@@ -130,10 +130,17 @@
         <a href="/login" class="modal-apply-btn">Login to Apply</a>
       `;
       modal.classList.add('active');
+      
+      if (!skipPushState) {
+        window.history.pushState({ modalOpen: true }, '', '/jobs/' + job.slug);
+      }
     }
 
     function closeModal() {
       modal.classList.remove('active');
+      if (window.location.pathname.startsWith('/jobs/')) {
+        window.history.pushState(null, '', '/openings');
+      }
     }
 
     window.onclick = function(event) {
@@ -141,6 +148,18 @@
         closeModal();
       }
     }
+
+    window.addEventListener('popstate', (event) => {
+      if (window.location.pathname === '/openings') {
+        modal.classList.remove('active');
+      } else if (window.location.pathname.startsWith('/jobs/')) {
+        const slug = window.location.pathname.split('/').pop();
+        const targetJobIndex = allJobs.findIndex(j => j.slug === slug);
+        if (targetJobIndex !== -1) {
+          openModal(targetJobIndex, true);
+        }
+      }
+    });
 
     // Use native fetch to Firestore REST API to ensure Googlebot compatibility
     const firestoreUrl = "https://firestore.googleapis.com/v1/projects/sabkajobs-training-app-659be/databases/(default)/documents/jobs";
@@ -179,8 +198,12 @@
           const description = fields.description?.stringValue || 'No description provided.';
           const datePosted = fields.createdAt?.timestampValue || new Date().toISOString();
           
+          const slugTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          const slugLocation = location.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          const slug = `${slugTitle}-${slugLocation}-${doc.name.split('/').pop()}`;
+
           allJobs.push({
-            title, company, location, salary, experience, skills, lastDateToApply, description
+            title, company, location, salary, experience, skills, lastDateToApply, description, slug
           });
 
           // Generate JSON-LD JobPosting schema for Google for Jobs
@@ -232,6 +255,15 @@
           container.appendChild(card);
           index++;
         });
+
+        // Handle deep link on initial load
+        if (window.location.pathname.startsWith('/jobs/')) {
+          const pathSlug = window.location.pathname.split('/').pop();
+          const targetIndex = allJobs.findIndex(j => j.slug === pathSlug);
+          if (targetIndex !== -1) {
+            openModal(targetIndex, true);
+          }
+        }
       })
       .catch((error) => {
         console.error("Error fetching jobs: ", error);
