@@ -93,7 +93,10 @@
     <p class="page-subtitle">Find and apply to the best jobs matching your skills.</p>
     
     <div id="loader" class="loader">Loading latest jobs...</div>
-    <div id="error" class="error-msg" style="display: none;">Unable to load jobs at this time.</div>
+    <div id="error" class="error-msg" style="display: none;">
+      <p style="margin-bottom: 12px;">Network error. Unable to load jobs at this time.</p>
+      <button onclick="loadJobs()" class="btn-primary" style="padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 15px; font-family: inherit;">Try Again</button>
+    </div>
     <div id="jobs-container" class="jobs-grid"></div>
   </main>
 
@@ -164,112 +167,122 @@
     // Use native fetch to Firestore REST API to ensure Googlebot compatibility
     const firestoreUrl = "https://firestore.googleapis.com/v1/projects/sabkajobs-training-app-659be/databases/(default)/documents/jobs";
 
-    fetch(firestoreUrl)
-      .then(response => {
-        if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
-      })
-      .then(data => {
-        loader.style.display = 'none';
-        
-        if (!data.documents || data.documents.length === 0) {
-          container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748B;">No job openings available right now. Please check back later!</p>';
-          return;
-        }
+    function loadJobs() {
+      loader.style.display = 'block';
+      errorDiv.style.display = 'none';
+      container.innerHTML = '';
+      allJobs = [];
 
-        // Sort by createdAt descending
-        let docs = data.documents;
-        docs.sort((a, b) => {
-          const dateA = new Date(a.fields.createdAt?.timestampValue || 0);
-          const dateB = new Date(b.fields.createdAt?.timestampValue || 0);
-          return dateB - dateA;
-        });
-        
-        let index = 0;
-        docs.forEach((doc) => {
-          const fields = doc.fields || {};
-          const title = fields.title?.stringValue || 'Unknown Title';
-          const company = fields.company?.stringValue || 'Unknown Company';
-          const location = fields.location?.stringValue || 'Not specified';
-          const salary = fields.salary?.stringValue || 'Not specified';
-          const experience = fields.experience?.stringValue || 'Not specified';
-          const skills = fields.skills?.stringValue || 'Not specified';
-          const lastDateToApply = fields.lastDateToApply?.stringValue || 'Not specified';
-          const description = fields.description?.stringValue || 'No description provided.';
-          const datePosted = fields.createdAt?.timestampValue || new Date().toISOString();
+      fetch(firestoreUrl)
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.json();
+        })
+        .then(data => {
+          loader.style.display = 'none';
           
-          const slugTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-          const slugLocation = location.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-          const slug = `${slugTitle}-${slugLocation}-${doc.name.split('/').pop()}`;
+          if (!data.documents || data.documents.length === 0) {
+            container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748B;">No job openings available right now. Please check back later!</p>';
+            return;
+          }
 
-          allJobs.push({
-            title, company, location, salary, experience, skills, lastDateToApply, description, slug
+          // Sort by createdAt descending
+          let docs = data.documents;
+          docs.sort((a, b) => {
+            const dateA = new Date(a.fields.createdAt?.timestampValue || 0);
+            const dateB = new Date(b.fields.createdAt?.timestampValue || 0);
+            return dateB - dateA;
+          });
+          
+          let index = 0;
+          docs.forEach((doc) => {
+            const fields = doc.fields || {};
+            const title = fields.title?.stringValue || 'Unknown Title';
+            const company = fields.company?.stringValue || 'Unknown Company';
+            const location = fields.location?.stringValue || 'Not specified';
+            const salary = fields.salary?.stringValue || 'Not specified';
+            const experience = fields.experience?.stringValue || 'Not specified';
+            const skills = fields.skills?.stringValue || 'Not specified';
+            const lastDateToApply = fields.lastDateToApply?.stringValue || 'Not specified';
+            const description = fields.description?.stringValue || 'No description provided.';
+            const datePosted = fields.createdAt?.timestampValue || new Date().toISOString();
+            
+            const slugTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            const slugLocation = location.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            const slug = `${slugTitle}-${slugLocation}-${doc.name.split('/').pop()}`;
+
+            allJobs.push({
+              title, company, location, salary, experience, skills, lastDateToApply, description, slug
+            });
+
+            // Generate JSON-LD JobPosting schema for Google for Jobs
+            const jobSchema = {
+              "@context": "https://schema.org/",
+              "@type": "JobPosting",
+              "title": title,
+              "description": description,
+              "hiringOrganization": {
+                "@type": "Organization",
+                "name": company,
+                "logo": "https://sabkajobs.in/assets/assets/images/logo.png"
+              },
+              "jobLocation": {
+                "@type": "Place",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": location,
+                  "addressCountry": "IN"
+                }
+              },
+              "datePosted": datePosted,
+              "employmentType": "FULL_TIME"
+            };
+            
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.text = JSON.stringify(jobSchema);
+            document.head.appendChild(script);
+            
+            const card = document.createElement('div');
+            card.className = 'job-card';
+            card.innerHTML = `
+              <div class="job-icon">${title.charAt(0).toUpperCase()}</div>
+              <div class="job-title">${title}</div>
+              <div class="job-company">${company}</div>
+              <div class="job-meta">
+                <div>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  ${location}
+                </div>
+                <div>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  ${salary}
+                </div>
+              </div>
+              <button onclick="openModal(${index})" class="btn-apply" style="cursor: pointer; background: none;">View Details</button>
+            `;
+            container.appendChild(card);
+            index++;
           });
 
-          // Generate JSON-LD JobPosting schema for Google for Jobs
-          const jobSchema = {
-            "@context": "https://schema.org/",
-            "@type": "JobPosting",
-            "title": title,
-            "description": description,
-            "hiringOrganization": {
-              "@type": "Organization",
-              "name": company,
-              "logo": "https://sabkajobs.in/assets/assets/images/logo.png"
-            },
-            "jobLocation": {
-              "@type": "Place",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": location,
-                "addressCountry": "IN"
-              }
-            },
-            "datePosted": datePosted,
-            "employmentType": "FULL_TIME"
-          };
-          
-          const script = document.createElement('script');
-          script.type = 'application/ld+json';
-          script.text = JSON.stringify(jobSchema);
-          document.head.appendChild(script);
-          
-          const card = document.createElement('div');
-          card.className = 'job-card';
-          card.innerHTML = `
-            <div class="job-icon">${title.charAt(0).toUpperCase()}</div>
-            <div class="job-title">${title}</div>
-            <div class="job-company">${company}</div>
-            <div class="job-meta">
-              <div>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                ${location}
-              </div>
-              <div>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                ${salary}
-              </div>
-            </div>
-            <button onclick="openModal(${index})" class="btn-apply" style="cursor: pointer; background: none;">View Details</button>
-          `;
-          container.appendChild(card);
-          index++;
-        });
-
-        // Handle deep link on initial load
-        if (window.location.pathname.startsWith('/jobs/')) {
-          const pathSlug = window.location.pathname.split('/').pop();
-          const targetIndex = allJobs.findIndex(j => j.slug === pathSlug);
-          if (targetIndex !== -1) {
-            openModal(targetIndex, true);
+          // Handle deep link on initial load
+          if (window.location.pathname.startsWith('/jobs/')) {
+            const pathSlug = window.location.pathname.split('/').pop();
+            const targetIndex = allJobs.findIndex(j => j.slug === pathSlug);
+            if (targetIndex !== -1) {
+              openModal(targetIndex, true);
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching jobs: ", error);
-        loader.style.display = 'none';
-        errorDiv.style.display = 'block';
-      });
+        })
+        .catch((error) => {
+          console.error("Error fetching jobs: ", error);
+          loader.style.display = 'none';
+          errorDiv.style.display = 'block';
+        });
+    }
+
+    // Initial load
+    loadJobs();
   </script>
 </body>
 </html>
