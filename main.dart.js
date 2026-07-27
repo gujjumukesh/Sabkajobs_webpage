@@ -129712,7 +129712,7 @@ H(a2){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0=this,a1=null
 if(a0.y)return B.i5
 if(a0.x==="job_seeker")return B.b3W
 s=t.p
-r=A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",new A.aTz(),B.ed,36,36)),B.aK,A.lv(a1,a1,a1,B.bS,a1,a1,!0,a1,B.q7,B.a4,a1,a1,B.aF,B.bd)],s),B.A,B.q,B.an,0,a1)
+r=A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",new A.aTz(),B.ed,36,36)),B.aK,A.lv(a1,a1,a1,B.bS,a1,a1,!0,a1,B.q7,B.a4,a1,a1,B.aF,B.bd)],s),B.A,B.q,B.an,0,a1)
 r=A.dV(A.b([A.cX(a1,a1,a1,B.uG,a1,a1,new A.aTA(a2),a1,a1,a1,a1),A.cX(a1,a1,a1,B.Cy,a1,a1,new A.aTB(a2),a1,a1,a1,a1)],s),B.d0,B.x,1,a1,B.d0,a1,r)
 q=A.bhn(A.bA(4281306438),B.kH,B.Uu,new A.aTC(a2))
 p=A.w(a0.f,a1,a1,a1,B.bcA,a1,a1,a1)
@@ -130550,7 +130550,7 @@ r=B.m.a4(b.r.a.a)
 q=B.m.a4(b.w.a.a)
 p=B.m.a4(b.x.a.a)
 o=t.p
-n=A.dV(a,a,B.x,1,a,B.d0,a,A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",new A.aYb(),B.ed,36,36)),B.aK,A.lv(a,a,a,B.bS,a,a,!0,a,B.b93,B.a4,a,a,B.aF,B.bd)],o),B.A,B.q,B.an,0,a))
+n=A.dV(a,a,B.x,1,a,B.d0,a,A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",new A.aYb(),B.ed,36,36)),B.aK,A.lv(a,a,a,B.bS,a,a,!0,a,B.b93,B.a4,a,a,B.aF,B.bd)],o),B.A,B.q,B.an,0,a))
 m=b.garb()
 l=A.a8(A.b([B.UD,A.bi5(B.Cu,B.UF,m,A.LZ(a,a,a,a,a,a,a,a,a,B.dg,a,a,a,a,new A.bg(A.I(8),B.T),B.WU,a,a,a,a))],o),B.A,B.b0,B.r,0,a)
 k=A.I(16)
@@ -132260,7 +132260,7 @@ s=$.A
 r=(s==null?$.A=$.af():s).W("[DEFAULT]")
 A.a2(r,$.aE(),!0)
 return A.dI(new A.b04(this),A.b3(new A.ae(r)).Y("users").an(q.a.c.a.a).cV(),t.Pi)},
-ayi(a){var s=null,r=t.p,q=A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",s,B.ed,32,32)),B.pT,A.w("SABKAJOBS",s,s,s,A.fV().$4$color$fontSize$fontWeight$letterSpacing(B.X,18,B.fm,1),s,s,s)],r),B.A,B.q,B.r,0,s),p=A.cX(s,s,s,B.abn,s,s,new A.b_K(this),s,s,s,s),o=A.cX(s,s,s,B.abs,s,s,new A.b_L(this),s,s,s,s),n=B.X.b_(0.1)
+ayi(a){var s=null,r=t.p,q=A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",s,B.ed,32,32)),B.pT,A.w("SABKAJOBS",s,s,s,A.fV().$4$color$fontSize$fontWeight$letterSpacing(B.X,18,B.fm,1),s,s,s)],r),B.A,B.q,B.r,0,s),p=A.cX(s,s,s,B.abn,s,s,new A.b_K(this),s,s,s,s),o=A.cX(s,s,s,B.abs,s,s,new A.b_L(this),s,s,s,s),n=B.X.b_(0.1)
 return A.dV(A.b([p,o,B.aK,A.dM(s,A.a_(s,A.tx(n,s,A.w(a.length!==0?a[0].toUpperCase():"U",s,s,s,B.U9,s,s,s),16),B.z,s,s,s,s,s,B.AP,s,s,s,s),B.ab,!1,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,new A.b_M(this),s,s,s,s,s,s)],r),s,s,s,s,s,s,q)},
 MK(a,b,c){var s,r=null,q=A.b([A.w(a,r,r,r,A.fV().$3$color$fontSize$fontWeight(B.cx,18,B.M),r,r,r)],t.p)
 if(b!=null){s=c==null?new A.b_S():c
@@ -132465,7 +132465,7 @@ case 4:n=b
 if(n.gcH())q.E(new A.b07(q,n))
 case 3:return A.p(null,r)}})
 return A.q($async$FA,r)},
-H(a){var s,r,q,p,o=this,n=null,m=t.p,l=A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",new A.b0h(),B.ed,36,36)),B.aK,A.lv(n,n,n,B.bS,n,n,!0,n,B.q7,B.a4,n,n,B.aF,B.bd)],m),B.A,B.q,B.an,0,n),k=A.b([],m),j=o.d==null
+H(a){var s,r,q,p,o=this,n=null,m=t.p,l=A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",new A.b0h(),B.ed,36,36)),B.aK,A.lv(n,n,n,B.bS,n,n,!0,n,B.q7,B.a4,n,n,B.aF,B.bd)],m),B.A,B.q,B.an,0,n),k=A.b([],m),j=o.d==null
 if(j)k.push(A.cM(B.bk8,new A.b0i(a),n))
 l=A.dV(k,B.d0,B.x,1,n,B.d0,n,l)
 k=!j
@@ -133148,7 +133148,7 @@ c=A.T(d,d.$ti.i("ao.E"))
 b1.a=c}else if(typeof e=="string"&&e.length!==0){d=new A.Y(A.b(e.split(","),s),new A.b2X(),t.a4).m3(0,new A.b2Y())
 c=A.T(d,d.$ti.i("y.E"))
 b1.a=c}d=t.p
-b=A.dV(a8,B.d0,B.x,1,a8,B.d0,a8,A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",new A.b2Z(),B.ed,36,36)),B.aK,A.lv(a8,a8,a8,B.bS,a8,a8,!0,a8,B.q7,B.a4,a8,a8,B.aF,B.bd)],d),B.A,B.q,B.an,0,a8))
+b=A.dV(a8,B.d0,B.x,1,a8,B.d0,a8,A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",new A.b2Z(),B.ed,36,36)),B.aK,A.lv(a8,a8,a8,B.bS,a8,a8,!0,a8,B.q7,B.a4,a8,a8,B.aF,B.bd)],d),B.A,B.q,B.an,0,a8))
 a=this.a
 a0=A.a8(A.b([B.UD,A.aCK(B.UF,new A.b3_(a,r),A.LZ(a8,a8,a8,a8,a8,a8,a8,a8,a8,B.X,a8,a8,a8,a8,new A.bg(A.I(12),B.T),B.jW,a8,a8,a8,a8))],d),B.A,B.b0,B.r,0,a8)
 a1=A.I(16)
@@ -133415,7 +133415,7 @@ case 4:n=b
 if(n.gcH())q.E(new A.b7l(q,n))
 case 3:return A.p(null,r)}})
 return A.q($async$Gi,r)},
-H(a){var s,r=null,q=t.p,p=A.dV(r,B.fo,B.x,1,r,B.fo,r,A.a8(A.b([A.IX(A.qB("assets/images/round_logo.jpg",new A.b7u(),B.ed,36,36)),B.aK,A.lv(r,r,r,B.bS,r,r,!0,r,B.q7,B.a4,r,r,B.aF,B.bd)],q),B.A,B.q,B.an,0,r)),o=this.e,n=$.A,m=(n==null?$.A=$.af():n).W("[DEFAULT]")
+H(a){var s,r=null,q=t.p,p=A.dV(r,B.fo,B.x,1,r,B.fo,r,A.a8(A.b([A.IX(A.qB("assets/images/app_icon.png",new A.b7u(),B.ed,36,36)),B.aK,A.lv(r,r,r,B.bS,r,r,!0,r,B.q7,B.a4,r,r,B.aF,B.bd)],q),B.A,B.q,B.an,0,r)),o=this.e,n=$.A,m=(n==null?$.A=$.af():n).W("[DEFAULT]")
 A.a2(m,$.aE(),!0)
 n=A.b3(new A.ae(m)).Y("interviews")
 s=this.d
@@ -134301,7 +134301,7 @@ a1===$&&A.a()
 s=f.ay
 s===$&&A.a()
 r=A.bc(e,A.ah(a2,e,b).w.a.a<=599?16:20,e)
-q=A.qB("assets/images/inapp_logo.png",e,e,A.zj(a2,150,180,120,150),e)
+q=A.qB("assets/images/app_icon.png",e,e,A.zj(a2,150,180,120,150),e)
 p=t.p
 q=A.cQ(A.a0(A.b([q,A.bc(e,A.ah(a2,e,b).w.a.a<=599?8:12,e),A.w("India's Job Matching Platform",e,e,e,A.dC().$2$color$fontSize(B.aC,A.ey(a2,13)),e,e,e)],p),B.A,B.q,B.r,0,B.C),e,e)
 o=A.bc(e,A.ah(a2,e,b).w.a.a<=599?24:32,e)
@@ -135175,7 +135175,7 @@ s.l()
 this.al3()},
 H(a){var s=null,r=this.e
 r===$&&A.a()
-return A.d6(s,B.x,A.cQ(new A.dy(r,!1,A.a0(A.b([A.qB("assets/images/splash_logo.png",new A.b9P(),s,s,320),B.b6A,B.b6w],t.p),B.A,B.bU,B.r,0,B.C),s),s,s),s,s,s)}}
+return A.d6(s,B.x,A.cQ(new A.dy(r,!1,A.a0(A.b([A.qB("assets/images/app_icon.png",new A.b9P(),s,s,320),B.b6A,B.b6w],t.p),B.A,B.bU,B.r,0,B.C),s),s,s),s,s,s)}}
 A.b9Q.prototype={
 $0(){var s,r=this.a.c
 if(r!=null){s=t.X
