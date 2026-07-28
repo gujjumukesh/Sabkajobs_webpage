@@ -130,7 +130,10 @@
         </div>
         <div class="modal-desc-title">Job Description</div>
         <div class="modal-desc">${job.description}</div>
-        <a href="/login" class="modal-apply-btn">Login to Apply</a>
+        <div style="display: flex; gap: 16px;">
+          <a href="/login" class="modal-apply-btn" style="flex: 1;">Login to Apply</a>
+          <button onclick="shareJob('${job.slug}', '${job.title}', '${job.location}')" class="modal-apply-btn" style="flex: 1; background: #3B82F6; border: none; cursor: pointer;">Share</button>
+        </div>
       `;
       modal.classList.add('active');
       
@@ -143,6 +146,23 @@
       modal.classList.remove('active');
       if (window.location.pathname.startsWith('/jobs/')) {
         window.history.pushState(null, '', '/jobs');
+      }
+    }
+
+    function shareJob(slug, title, location) {
+      const url = window.location.origin + '/jobs/' + slug;
+      const text = 'Check out this job on SabkaJobs:\n' + title + ' in ' + location;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'SabkaJobs',
+          text: text,
+          url: url
+        }).catch(err => console.error('Share failed', err));
+      } else {
+        navigator.clipboard.writeText(text + '\n\n' + url)
+          .then(() => alert('Job link copied to clipboard!'))
+          .catch(err => console.error('Copy failed', err));
       }
     }
 
@@ -245,7 +265,11 @@
             
             const card = document.createElement('div');
             card.className = 'job-card';
+            card.style.position = 'relative';
             card.innerHTML = `
+              <button onclick="shareJob('${slug}', '${title.replace(/'/g, "\\'")}', '${location.replace(/'/g, "\\'")}')" style="position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: #64748B; padding: 8px;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+              </button>
               <div class="job-icon">${title.charAt(0).toUpperCase()}</div>
               <div class="job-title">${title}</div>
               <div class="job-company">${company}</div>
