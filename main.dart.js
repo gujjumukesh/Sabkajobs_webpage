@@ -135472,8 +135472,8 @@ q=r.w
 q.K$=s
 q.P$=0
 r.alF()},
-hm(){var s=0,r=A.r(t.H),q,p=2,o=[],n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6
-var $async$hm=A.n(function(b7,b8){if(b7===1){o.push(b8)
+hm(){var s=0,r=A.r(t.H),q,p=2,o=[],n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6,b7
+var $async$hm=A.n(function(b8,b9){if(b8===1){o.push(b9)
 s=p}for(;;)switch(s){case 0:if(!n.d.gV().hO()){s=1
 break}n.F(new A.b2n(n))
 p=4
@@ -135483,66 +135483,66 @@ s=J.d(m,"Gmsh@gmail.com")&&J.d(l,"Gmsh2003@")?7:8
 break
 case 7:k=null
 p=10
-a6=$.B
-a7=(a6==null?$.B=$.af():a6).Y("[DEFAULT]")
-A.a3(a7,$.aF(),!0)
+a7=$.B
+a8=(a7==null?$.B=$.af():a7).Y("[DEFAULT]")
+A.a3(a8,$.aF(),!0)
 s=13
-return A.i(A.cc(new A.ae(a7)).vn(m,l),$async$hm)
-case 13:k=b8
+return A.i(A.cc(new A.ae(a8)).vn(m,l),$async$hm)
+case 13:k=b9
 p=4
 s=12
 break
 case 10:p=9
-b5=o.pop()
-a6=$.B
-a7=(a6==null?$.B=$.af():a6).Y("[DEFAULT]")
-A.a3(a7,$.aF(),!0)
+b6=o.pop()
+a7=$.B
+a8=(a7==null?$.B=$.af():a7).Y("[DEFAULT]")
+A.a3(a8,$.aF(),!0)
 s=14
-return A.i(A.cc(new A.ae(a7)).tX(m,l),$async$hm)
-case 14:k=b8
+return A.i(A.cc(new A.ae(a8)).tX(m,l),$async$hm)
+case 14:k=b9
 s=12
 break
 case 9:s=4
 break
 case 12:s=k.gfW()!=null?15:16
 break
-case 15:a6=$.B
-a7=(a6==null?$.B=$.af():a6).Y("[DEFAULT]")
-a6=$.aF()
-A.a3(a7,a6,!0)
-a9=A.b7(new A.ae(a7)).Z("users").aq(k.gfW().a.c.a.a)
-b0=t.N
-b1=t.z
-b2=A.ac(["role","superadmin","email",m],b0,b1)
-b3=A.kC(!0)
+case 15:a7=$.B
+a8=(a7==null?$.B=$.af():a7).Y("[DEFAULT]")
+a7=$.aF()
+A.a3(a8,a7,!0)
+b0=A.b7(new A.ae(a8)).Z("users").aq(k.gfW().a.c.a.a)
+b1=t.N
+b2=t.z
+b3=A.ac(["role","superadmin","email",m],b1,b2)
+b4=A.kC(!0)
+b3=A.hw(b3)
+b3.toString
+s=17
+return A.i(b0.a.dR(0,b3,b4),$async$hm)
+case 17:b4=$.B
+a8=(b4==null?$.B=$.af():b4).Y("[DEFAULT]")
+A.a3(a8,a7,!0)
+a7=A.b7(new A.ae(a8)).Z("admin").aq(k.gfW().a.c.a.a)
+b2=A.ac(["role","superadmin","email",m],b1,b2)
+b1=A.kC(!0)
 b2=A.hw(b2)
 b2.toString
-s=17
-return A.i(a9.a.dR(0,b2,b3),$async$hm)
-case 17:b3=$.B
-a7=(b3==null?$.B=$.af():b3).Y("[DEFAULT]")
-A.a3(a7,a6,!0)
-a6=A.b7(new A.ae(a7)).Z("admin").aq(k.gfW().a.c.a.a)
-b1=A.ac(["role","superadmin","email",m],b0,b1)
-b0=A.kC(!0)
-b1=A.hw(b1)
-b1.toString
 s=18
-return A.i(a6.a.dR(0,b1,b0),$async$hm)
+return A.i(a7.a.dR(0,b2,b1),$async$hm)
 case 18:case 16:case 8:s=19
 return A.i(A.a_h(m,l),$async$hm)
-case 19:j=b8
-a6=j.gfW()
-A.dy().$1("Firebase Login: Auth succeeded. User UID: "+A.j(a6==null?null:a6.a.c.a.a))
+case 19:j=b9
+a7=j.gfW()
+A.dy().$1("Firebase Login: Auth succeeded. User UID: "+A.j(a7==null?null:a7.a.c.a.a))
 if(n.c==null){s=1
-break}a6=j.gfW()
-a6.toString
-i=a6
+break}a7=j.gfW()
+a7.toString
+i=a7
 h=i.a.c.a.a
 A.dy().$1("Firebase Login: Fetching user doc from Firestore for UID: "+A.j(h))
 s=20
 return A.i(A.xE(h,null),$async$hm)
-case 20:g=b8
+case 20:g=b9
 A.dy().$1("Firebase Login: Firestore fetch completed. Doc data: "+A.j(g))
 s=g==null?21:22
 break
@@ -135553,14 +135553,16 @@ return A.i(A.ja(),$async$hm)
 case 23:n.hB("No account found. Please sign up first.")
 s=1
 break
-case 22:b4=A.ay(J.as(g,"role"))
-f=b4==null?"":b4
+case 22:b5=A.ay(J.as(g,"role"))
+f=b5==null?"":b5
 A.dy().$1('Firebase Login: Detected role: "'+A.j(f)+'"')
 if(n.c==null){s=1
 break}e=B.m.a1(f.toLowerCase())
 s=J.d(e,"employer")||J.d(e,"hr")||J.d(e,"hrs")?24:25
 break
-case 24:s=!i.a.c.a.r?26:27
+case 24:a7=J.as(g,"emailVerified")
+d=J.d(a7,!0)
+s=!i.a.c.a.r&&!d?26:27
 break
 case 26:n.F(new A.b2p(n))
 s=28
@@ -135568,10 +135570,10 @@ return A.i(A.ja(),$async$hm)
 case 28:n.hB(u.I)
 s=1
 break
-case 27:a6=J.as(g,"approvalStatus")
-A.ay(a6)
-d=a6==null?"approved":a6
-s=J.d(d,"pending")?29:31
+case 27:a7=J.as(g,"approvalStatus")
+A.ay(a7)
+c=a7==null?"approved":a7
+s=J.d(c,"pending")?29:31
 break
 case 29:n.F(new A.b2s(n))
 s=32
@@ -135581,7 +135583,7 @@ s=1
 break
 s=30
 break
-case 31:s=J.d(d,"rejected")?33:34
+case 31:s=J.d(c,"rejected")?33:34
 break
 case 33:n.F(new A.b2t(n))
 s=35
@@ -135593,44 +135595,44 @@ case 34:case 30:case 25:n.F(new A.b2u(n))
 s=J.d(e,"employer")||J.d(e,"hr")||J.d(e,"hrs")?36:38
 break
 case 36:A.dy().$1("Firebase Login: Navigating to employer dashboard")
-a6=n.c
-a6.toString
-a9=t.X
-A.h0(a6,"/employer_dashboard",a9,a9)
+a7=n.c
+a7.toString
+b0=t.X
+A.h0(a7,"/employer_dashboard",b0,b0)
 s=37
 break
 case 38:s=J.d(e,"job_seeker")||J.d(e,"job_seekers")?39:41
 break
-case 39:a0=J.as(g,"feePlan")
-c=a0
-s=c==null||J.ax(c).length===0?42:43
+case 39:a1=J.as(g,"feePlan")
+b=a1
+s=b==null||J.ax(b).length===0?42:43
 break
-case 42:a6=J.as(g,"createdAt")
-b=t.Cc.a(a6)
-a=b==null||A.i1(b.ght()).nG(A.d9(2026,7,25,0,0,0,0))
-s=!a?44:45
+case 42:a7=J.as(g,"createdAt")
+a=t.Cc.a(a7)
+a0=a==null||A.i1(a.ght()).nG(A.d9(2026,7,25,0,0,0,0))
+s=!a0?44:45
 break
-case 44:a6=j.gfW().a
-a9=j.gfW()
-a9.toString
+case 44:a7=j.gfW().a
+b0=j.gfW()
+b0.toString
 s=46
-return A.i(A.CW(a6.c.a.a,a9,g),$async$hm)
+return A.i(A.CW(a7.c.a.a,b0,g),$async$hm)
 case 46:s=47
 return A.i(A.ja(),$async$hm)
 case 47:if(n.c!=null){n.F(new A.b2v(n))
 n.hB(u.p)}s=1
 break
 case 45:A.dy().$1(u.d)
-a6=n.c
-a6.toString
-A.ex(a6,A.bR(new A.b2w(),null,t.z))
+a7=n.c
+a7.toString
+A.ex(a7,A.bR(new A.b2w(),null,t.z))
 s=1
 break
 case 43:A.dy().$1("Firebase Login: Navigating to job seeker dashboard")
-a6=n.c
-a6.toString
-a9=t.X
-A.h0(a6,"/user_dashboard",a9,a9)
+a7=n.c
+a7.toString
+b0=t.X
+A.h0(a7,"/user_dashboard",b0,b0)
 s=40
 break
 case 41:s=J.d(e,"admin")||J.d(e,"superadmin")||J.d(e,"super_admin")?48:50
@@ -135645,58 +135647,58 @@ break
 s=49
 break
 case 50:A.dy().$1("Firebase Login: Role is empty. Falling back to selected tab role: 0")
-c=J.as(g,"feePlan")
-a0=c
-s=a0==null||J.ax(a0).length===0?52:53
+b=J.as(g,"feePlan")
+a1=b
+s=a1==null||J.ax(a1).length===0?52:53
 break
-case 52:a6=J.as(g,"createdAt")
-a1=t.Cc.a(a6)
-a2=a1==null||A.i1(a1.ght()).nG(A.d9(2026,7,25,0,0,0,0))
-s=!a2?54:55
+case 52:a7=J.as(g,"createdAt")
+a2=t.Cc.a(a7)
+a3=a2==null||A.i1(a2.ght()).nG(A.d9(2026,7,25,0,0,0,0))
+s=!a3?54:55
 break
-case 54:a6=j.gfW().a
-a9=j.gfW()
-a9.toString
+case 54:a7=j.gfW().a
+b0=j.gfW()
+b0.toString
 s=56
-return A.i(A.CW(a6.c.a.a,a9,g),$async$hm)
+return A.i(A.CW(a7.c.a.a,b0,g),$async$hm)
 case 56:s=57
 return A.i(A.ja(),$async$hm)
 case 57:if(n.c!=null){n.F(new A.b2y(n))
 n.hB(u.p)}s=1
 break
 case 55:A.dy().$1(u.d)
-a6=n.c
-a6.toString
-A.ex(a6,A.bR(new A.b2z(),null,t.z))
+a7=n.c
+a7.toString
+A.ex(a7,A.bR(new A.b2z(),null,t.z))
 s=1
 break
 case 53:A.dy().$1("Firebase Login: Navigating to job seeker dashboard (fallback)")
-a6=n.c
-a6.toString
-a9=t.X
-A.h0(a6,"/user_dashboard",a9,a9)
+a7=n.c
+a7.toString
+b0=t.X
+A.h0(a7,"/user_dashboard",b0,b0)
 case 49:case 40:case 37:p=2
 s=6
 break
 case 4:p=3
-b6=o.pop()
-a6=A.a8(b6)
-s=a6 instanceof A.m7?58:60
+b7=o.pop()
+a7=A.a8(b7)
+s=a7 instanceof A.m7?58:60
 break
-case 58:a3=a6
+case 58:a4=a7
 if(n.c==null){s=1
 break}s=61
-return A.i(A.ZZ(a3,B.m.a1(n.e.a.a)),$async$hm)
-case 61:a4=b8
+return A.i(A.ZZ(a4,B.m.a1(n.e.a.a)),$async$hm)
+case 61:a5=b9
 if(n.c==null){s=1
 break}n.F(new A.b2q(n))
-n.hB(a4)
+n.hB(a5)
 s=59
 break
-case 60:a5=a6
+case 60:a6=a7
 if(n.c==null){s=1
 break}n.F(new A.b2r(n))
-n.hB(A.CN(a5))
+n.hB(A.CN(a6))
 case 59:s=6
 break
 case 3:s=2
@@ -135704,35 +135706,35 @@ break
 case 6:case 1:return A.p(q,r)
 case 2:return A.o(o.at(-1),r)}})
 return A.q($async$hm,r)},
-ki(){var s=0,r=A.r(t.H),q,p=2,o=[],n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4
-var $async$ki=A.n(function(a5,a6){if(a5===1){o.push(a6)
+ki(){var s=0,r=A.r(t.H),q,p=2,o=[],n=this,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5
+var $async$ki=A.n(function(a6,a7){if(a6===1){o.push(a7)
 s=p}for(;;)switch(s){case 0:n.F(new A.b2c(n))
 p=4
 A.dy().$1("Firebase Login: Starting Google Sign-In")
 s=7
 return A.i(A.aty(),$async$ki)
-case 7:m=a6
-b=m.gfW()
-A.dy().$1("Firebase Login: Google Sign-In succeeded. User: "+A.j(b==null?null:b.a.c.a.b))
+case 7:m=a7
+a=m.gfW()
+A.dy().$1("Firebase Login: Google Sign-In succeeded. User: "+A.j(a==null?null:a.a.c.a.b))
 if(n.c==null){s=1
 break}l=m.gfW().a.c.a.a
 s=8
 return A.i(A.xE(l,null),$async$ki)
-case 8:k=a6
+case 8:k=a7
 s=k==null?9:10
 break
 case 9:if(n.c==null){s=1
 break}n.F(new A.b2d(n))
 p=12
-b=m.gfW()
-b=b==null?null:b.cr(0)
+a=m.gfW()
+a=a==null?null:a.cr(0)
 s=15
-return A.i(t.uz.b(b)?b:A.hx(b,t.H),$async$ki)
+return A.i(t.uz.b(a)?a:A.hx(a,t.H),$async$ki)
 case 15:p=4
 s=14
 break
 case 12:p=11
-a3=o.pop()
+a4=o.pop()
 s=14
 break
 case 11:s=4
@@ -135742,13 +135744,15 @@ return A.i(A.ja(),$async$ki)
 case 16:n.hB("Account not exists. Please sign up.")
 s=1
 break
-case 10:a0=A.ay(J.as(k,"role"))
-j=a0==null?"job_seeker":a0
+case 10:a1=A.ay(J.as(k,"role"))
+j=a1==null?"job_seeker":a1
 if(n.c==null){s=1
 break}i=B.m.a1(j.toLowerCase())
 s=J.d(i,"employer")||J.d(i,"hr")||J.d(i,"hrs")?17:18
 break
-case 17:s=!m.gfW().a.c.a.r?19:20
+case 17:a=J.as(k,"emailVerified")
+h=J.d(a,!0)
+s=!m.gfW().a.c.a.r&&!h?19:20
 break
 case 19:n.F(new A.b2e(n))
 s=21
@@ -135756,10 +135760,10 @@ return A.i(A.ja(),$async$ki)
 case 21:n.hB(u.I)
 s=1
 break
-case 20:b=J.as(k,"approvalStatus")
-A.ay(b)
-h=b==null?"approved":b
-s=J.d(h,"pending")?22:24
+case 20:a=J.as(k,"approvalStatus")
+A.ay(a)
+g=a==null?"approved":a
+s=J.d(g,"pending")?22:24
 break
 case 22:n.F(new A.b2f(n))
 s=25
@@ -135769,7 +135773,7 @@ s=1
 break
 s=23
 break
-case 24:s=J.d(h,"rejected")?26:27
+case 24:s=J.d(g,"rejected")?26:27
 break
 case 26:n.F(new A.b2g(n))
 s=28
@@ -135780,10 +135784,10 @@ break
 case 27:case 23:case 18:n.F(new A.b2h(n))
 s=J.d(i,"employer")||J.d(i,"hr")||J.d(i,"hrs")?29:31
 break
-case 29:b=n.c
-b.toString
-a1=t.X
-A.h0(b,"/employer_dashboard",a1,a1)
+case 29:a=n.c
+a.toString
+a2=t.X
+A.h0(a,"/employer_dashboard",a2,a2)
 s=30
 break
 case 31:s=J.d(i,"admin")||J.d(i,"superadmin")||J.d(i,"super_admin")?32:34
@@ -135797,48 +135801,48 @@ s=1
 break
 s=33
 break
-case 34:a2=J.as(k,"feePlan")
-g=a2
-s=g==null||J.ax(g).length===0?36:37
+case 34:a3=J.as(k,"feePlan")
+f=a3
+s=f==null||J.ax(f).length===0?36:37
 break
-case 36:b=J.as(k,"createdAt")
-f=t.Cc.a(b)
-e=f==null||A.i1(f.ght()).nG(A.d9(2026,7,25,0,0,0,0))
-s=!e?38:39
+case 36:a=J.as(k,"createdAt")
+e=t.Cc.a(a)
+d=e==null||A.i1(e.ght()).nG(A.d9(2026,7,25,0,0,0,0))
+s=!d?38:39
 break
-case 38:b=m.gfW().a
-a1=m.gfW()
-a1.toString
+case 38:a=m.gfW().a
+a2=m.gfW()
+a2.toString
 s=40
-return A.i(A.CW(b.c.a.a,a1,k),$async$ki)
+return A.i(A.CW(a.c.a.a,a2,k),$async$ki)
 case 40:s=41
 return A.i(A.ja(),$async$ki)
 case 41:if(n.c!=null){n.F(new A.b2j(n))
 n.hB(u.p)}s=1
 break
 case 39:A.dy().$1("Firebase Login: Google user without feePlan, navigating to payment step")
-b=n.c
-b.toString
-A.ex(b,A.bR(new A.b2k(),null,t.z))
+a=n.c
+a.toString
+A.ex(a,A.bR(new A.b2k(),null,t.z))
 s=1
 break
-case 37:b=n.c
-b.toString
-a1=t.X
-A.h0(b,"/user_dashboard",a1,a1)
+case 37:a=n.c
+a.toString
+a2=t.X
+A.h0(a,"/user_dashboard",a2,a2)
 case 33:case 30:p=2
 s=6
 break
 case 4:p=3
-a4=o.pop()
-b=A.a8(a4)
-if(b instanceof A.m7){d=b
+a5=o.pop()
+a=A.a8(a5)
+if(a instanceof A.m7){c=a
 if(n.c==null){s=1
 break}n.F(new A.b2l(n))
-n.hB(A.K8(d))}else{c=b
+n.hB(A.K8(c))}else{b=a
 if(n.c==null){s=1
 break}n.F(new A.b2m(n))
-n.hB(A.CN(c))}s=6
+n.hB(A.CN(b))}s=6
 break
 case 3:s=2
 break
