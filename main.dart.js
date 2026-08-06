@@ -136221,7 +136221,6 @@ $1(a){return this.a.hm()},
 $S:36}
 A.b28.prototype={
 $1(a){if(a==null||a.length===0)return"Password is required."
-if(a.length<8)return"Password must be at least 8 characters."
 return null},
 $S:4}
 A.b26.prototype={
