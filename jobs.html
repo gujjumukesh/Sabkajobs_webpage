@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
   <link rel="canonical" href="https://sabkajobs.in/jobs" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     /* Reset & Base variables copied from landing page */
     :root {
@@ -20,67 +23,335 @@
       --bg: #F8FAFC;
       --bg-white: #FFFFFF;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
     /* Header */
-    header { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #E2E8F0; }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .brand img { height: 40px; border-radius: 8px; }
-    .nav-cta a { text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 15px; margin-left: 12px; }
-    .btn-ghost { color: var(--text); }
-    .btn-ghost:hover { background: #F1F5F9; }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-primary:hover { background: var(--primary-dark); }
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .nav-cta a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      margin-left: 12px;
+    }
+
+    .btn-ghost {
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: #F1F5F9;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
 
     /* Main Content */
-    main { max-width: 1200px; margin: 40px auto; padding: 0 24px; min-height: 70vh; }
-    .page-title { font-size: 36px; color: var(--secondary); margin-bottom: 8px; font-weight: 800; }
-    .page-subtitle { font-size: 16px; color: var(--text-light); margin-bottom: 40px; }
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 24px;
+      min-height: 70vh;
+    }
+
+    .page-title {
+      font-size: 36px;
+      color: var(--secondary);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 40px;
+    }
 
     /* Jobs Grid */
-    .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-    
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
     /* Job Card */
-    .job-card { background: white; border-radius: 16px; padding: 24px; border: 1px solid #E2E8F0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
-    .job-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); }
-    .job-icon { width: 48px; height: 48px; background: #EFF6FF; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #2563EB; font-size: 24px; font-weight: bold; }
-    .job-title { font-size: 18px; font-weight: 700; color: var(--secondary); margin-bottom: 4px; }
-    .job-company { font-size: 14px; font-weight: 600; color: #2563EB; margin-bottom: 16px; }
-    .job-meta { display: flex; gap: 16px; margin-bottom: 24px; font-size: 13px; color: var(--text-light); }
-    .job-meta div { display: flex; align-items: center; gap: 4px; }
-    .job-meta svg { width: 16px; height: 16px; }
-    .btn-apply { margin-top: auto; display: block; text-align: center; width: 100%; padding: 12px; border-radius: 8px; border: 1.5px solid var(--primary); color: var(--primary); text-decoration: none; font-weight: 600; transition: all 0.2s; }
-    .btn-apply:hover { background: var(--primary); color: white; }
+    .job-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .job-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-icon {
+      width: 48px;
+      height: 48px;
+      background: #EFF6FF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: #2563EB;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .job-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .job-company {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2563EB;
+      margin-bottom: 16px;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .job-meta div {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .job-meta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-apply {
+      margin-top: auto;
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-apply:hover {
+      background: var(--primary);
+      color: white;
+    }
 
     /* Loader */
-    .loader { text-align: center; padding: 40px; color: var(--text-light); font-weight: 500; font-size: 18px; }
-    .error-msg { text-align: center; padding: 40px; color: #EF4444; font-weight: 500; }
-    
+    .loader {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    .error-msg {
+      text-align: center;
+      padding: 40px;
+      color: #EF4444;
+      font-weight: 500;
+    }
+
     /* Modal */
-    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 24px; opacity: 0; transition: opacity 0.2s; }
-    .modal-overlay.active { display: flex; opacity: 1; }
-    .modal-content { background: white; border-radius: 16px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; padding: 32px; position: relative; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-    .modal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-light); }
-    .modal-title { font-size: 24px; font-weight: 800; color: var(--secondary); margin-bottom: 8px; }
-    .modal-company { font-size: 16px; font-weight: 600; color: #2563EB; margin-bottom: 24px; }
-    .modal-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #E2E8F0; }
-    .meta-item { display: flex; flex-direction: column; gap: 4px; }
-    .meta-label { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
-    .meta-val { font-size: 15px; font-weight: 600; color: var(--text); }
-    .modal-desc-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--secondary); }
-    .modal-desc { font-size: 15px; color: var(--text); line-height: 1.7; white-space: pre-wrap; margin-bottom: 32px; }
-    .modal-apply-btn { display: block; text-align: center; width: 100%; padding: 16px; border-radius: 8px; background: var(--primary); color: white; text-decoration: none; font-weight: 600; font-size: 16px; transition: background 0.2s; }
-    .modal-apply-btn:hover { background: var(--primary-dark); }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    .modal-company {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2563EB;
+      margin-bottom: 24px;
+    }
+
+    .modal-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-val {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .modal-desc-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--secondary);
+    }
+
+    .modal-desc {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      white-space: pre-wrap;
+      margin-bottom: 32px;
+    }
+
+    .modal-apply-btn {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .modal-apply-btn:hover {
+      background: var(--primary-dark);
+    }
   </style>
 </head>
+
 <body>
 
   <header>
     <div class="header-inner">
       <a href="/" class="brand">
-        <img src="assets/assets/images/logo.png" alt="Sabkajobs logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'><rect width=\'40\' height=\'40\' fill=\'%2310B981\'/><text x=\'20\' y=\'20\' fill=\'white\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' font-weight=\'bold\'>SJ</text></svg>'">
+        <img src="assets/assets/images/logo.png" alt="Sabkajobs logo"
+          onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 40 40\'><rect width=\'40\' height=\'40\' fill=\'%2310B981\'/><text x=\'20\' y=\'20\' fill=\'white\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' font-weight=\'bold\'>SJ</text></svg>'">
       </a>
       <div class="nav-cta">
         <a class="btn btn-ghost" href="/login">Open Portal</a>
@@ -91,11 +362,13 @@
   <main>
     <h1 class="page-title">Latest Opportunities</h1>
     <p class="page-subtitle">Find and apply to the best jobs matching your skills.</p>
-    
+
     <div id="loader" class="loader">Loading latest jobs...</div>
     <div id="error" class="error-msg" style="display: none;">
       <p style="margin-bottom: 12px;">Network error. Unable to load jobs at this time.</p>
-      <button onclick="loadJobs()" class="btn-primary" style="padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 15px; font-family: inherit;">Try Again</button>
+      <button onclick="loadJobs()" class="btn-primary"
+        style="padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 15px; font-family: inherit;">Try
+        Again</button>
     </div>
     <div id="jobs-container" class="jobs-grid"></div>
   </main>
@@ -136,7 +409,7 @@
         </div>
       `;
       modal.classList.add('active');
-      
+
       if (!skipPushState) {
         window.history.pushState({ modalOpen: true }, '', '/jobs/' + job.slug);
       }
@@ -152,7 +425,7 @@
     function shareJob(slug, title, location) {
       const url = window.location.origin + '/jobs/' + slug;
       const text = 'Check out this job on SabkaJobs:\n' + title + ' in ' + location;
-      
+
       if (navigator.share) {
         navigator.share({
           title: 'SabkaJobs',
@@ -166,7 +439,7 @@
       }
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target == modal) {
         closeModal();
       }
@@ -200,7 +473,7 @@
         })
         .then(data => {
           loader.style.display = 'none';
-          
+
           if (!data.documents || data.documents.length === 0) {
             container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748B;">No job openings available right now. Please check back later!</p>';
             return;
@@ -213,7 +486,7 @@
             const dateB = new Date(b.fields.createdAt?.timestampValue || 0);
             return dateB - dateA;
           });
-          
+
           let index = 0;
           docs.forEach((doc) => {
             const fields = doc.fields || {};
@@ -226,7 +499,7 @@
             const lastDateToApply = fields.lastDateToApply?.stringValue || 'Not specified';
             const description = fields.description?.stringValue || 'No description provided.';
             const datePosted = fields.createdAt?.timestampValue || new Date().toISOString();
-            
+
             const slugTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             const slugLocation = location.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             const slug = `${slugTitle}-${slugLocation}-${doc.name.split('/').pop()}`;
@@ -238,7 +511,7 @@
             // Job schema injection has been removed from here. 
             // Google Jobs guidelines strictly forbid JobPosting schema on list pages.
             // The single-job schema is now correctly handled server-side by seoApi.
-            
+
             const card = document.createElement('div');
             card.className = 'job-card';
             card.style.position = 'relative';
@@ -289,4 +562,5 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
+
 </html>
