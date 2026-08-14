@@ -1,11 +1,11 @@
 {
-    "name": "Sabkajobs training",
-    "short_name": "Sabkajobs training",
+    "name": "Sabkajobs — Grab Your Dream Job",
+    "short_name": "Sabkajobs",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "theme_color": "#1E1B4B",
+    "description": "Your Career, Matched by AI. Grab top job opportunities across India with free ATS-friendly matching & placement training.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
