@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sabkajobs.in/sitemap.xml
+Sitemap: https://sabkajobs.vercel.app/sitemap.xml
