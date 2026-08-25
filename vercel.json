@@ -6,6 +6,7 @@
     { "source": "/jobs/:slug", "destination": "https://asia-south1-sabkajobs-training-app-659be.cloudfunctions.net/seoApi/jobs/:slug" },
     { "source": "/jobs", "destination": "/jobs.html" },
     { "source": "/google79b8ef15f6ac7926.html", "destination": "/google79b8ef15f6ac7926.html" },
+    { "source": "/.well-known/assetlinks.json", "destination": "/.well-known/assetlinks.json" },
     { "source": "/(.*)", "destination": "/app.html" }
   ]
 }
