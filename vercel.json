@@ -1,5 +1,17 @@
 {
   "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/app",
+      "destination": "https://play.google.com/store/apps/details?id=sabkajobs.co.in",
+      "permanent": false
+    },
+    {
+      "source": "/download",
+      "destination": "https://play.google.com/store/apps/details?id=sabkajobs.co.in",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/api/jobs/:slug", "destination": "https://asia-south1-sabkajobs-training-app-659be.cloudfunctions.net/seoApi/api/jobs/:slug" },
     { "source": "/sitemap.xml", "destination": "https://asia-south1-sabkajobs-training-app-659be.cloudfunctions.net/seoApi/sitemap.xml" },
